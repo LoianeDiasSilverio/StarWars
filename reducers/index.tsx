@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux'
 import promotions from './promotions'
-import promotionPage from './promotionPage'
-import promotionsRefresh from './promotionsRefresh'
+import promotionIncrement from './promotionIncrement'
+import promotionLoading from './promotionLoading';
+import promotionsNotFavorite from './promotionsNotFavorite';
+import promotionsFavorite from './promotionsFavorite';
 
 export default combineReducers({
   promotions,
-  promotionPage,
-  promotionsRefresh
+  promotionIncrement,
+  promotionLoading,
+  promotionsNotFavorite,
+  promotionsFavorite
 })

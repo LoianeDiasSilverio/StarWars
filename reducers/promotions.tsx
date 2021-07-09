@@ -1,12 +1,7 @@
 const promotions = (state = [], action) => {
     switch (action.type) {
-      case 'ADD_PROMOTION':
-        return [
-          ...state,
-          action.data
-        ]
-      case 'CLEAR_PROMOTIONS':
-        return state = []
+      case 'LIST':
+        return action.data;
       default:
         return state
     }

@@ -1,13 +1,23 @@
-export const addPromotion = data => ({
-    type: 'ADD_PROMOTION',
+export const addList = data => ({
+    type: 'LIST',
+    data
+  })
+
+  export const addListFavorite = data => ({
+    type: 'LIST_FAVORITE',
     data
   })
   
+  export const addListNotFavorite = data => ({
+    type: 'LIST_NOT_FAVORITE',
+    data
+  })
+
   export const clearPromotions = {
     type: 'CLEAR_PROMOTIONS'
   }
   
-  export const pageIncrement = {
+  export const increment = {
     type: 'INCREMENT'
   }
   
