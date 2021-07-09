@@ -1,4 +1,7 @@
 {
+  "compilerOptions": {
+    "jsx": "react"
+  },
 "target": "esnext",
     "baseUrl": ".",
     "paths": {
