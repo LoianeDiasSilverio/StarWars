@@ -14,6 +14,7 @@ import {
   setRefreshTrue, 
   setRefreshFalse 
 } from '../../../actions'
+import { useNavigation } from '@react-navigation/native';
 import Card from '../../components/card';
 import PeopleService from '../../services/peopleService';
 import styles from '../../index.styles';
@@ -30,7 +31,7 @@ const mapStateToProps = (state) => {
 }
 
 const Home = (props) => {
-
+  const navigation = useNavigation();
   const arrayList = [];
 
   useEffect(() => {
@@ -61,12 +62,11 @@ const Home = (props) => {
   }
 
   const renderPeople = ({ item }) => (
-    <Card item={item} favorite={favorite} />
+    <Card item={item} onPress={() => navigation.navigate('Detail', {item})} favorite={favorite} />
   );
 
   const favorite = (item) => {
     props.dispatch(setRefreshTrue)
-    debugger;
     const listAll = props.promotions.data;
     debugger;
     let newList = listAll.filter(data => data.url !== item.url);
