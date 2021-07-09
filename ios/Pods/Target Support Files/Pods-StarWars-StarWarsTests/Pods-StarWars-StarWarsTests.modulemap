@@ -1,0 +1,6 @@
+module Pods_StarWars_StarWarsTests {
+  umbrella header "Pods-StarWars-StarWarsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
