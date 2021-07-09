@@ -1,12 +1,40 @@
 
-import React from "react";
+import * as React from 'react'
+import {
+    useState, useEffect
+}  from 'react';
 import { SafeAreaView, Text } from "react-native";
-const Home = () => {
+import { connect } from 'react-redux'
+import store from '../../../store'
+import { 
+  addPromotion, 
+  pageIncrement, 
+  pageBackToStart, 
+  clearPromotions, 
+  setRefreshTrue, 
+  setRefreshFalse 
+} from '../../../actions'
+
+const mapStateToProps = (state) => {
+  const  promotions = { 
+    data: state.promotions,
+    refreshing: state.promotionsRefresh.refreshing
+  }
+  return { promotions }
+}
+
+const Home = (props) => {
+
+  useEffect(() => {
+    props.dispatch(setRefreshFalse)
+    props.dispatch(addPromotion('Teste'))
+  }, [])
+
   return(
     <SafeAreaView> 
-      <Text>Pagina Inicial</Text>
+      <Text>{props.promotions.data}</Text>
     </SafeAreaView>
   );
 }
 
-export default Home;
+export default connect(mapStateToProps)(Home)
