@@ -3,7 +3,7 @@ import * as React from 'react'
 import {
     useEffect
 }  from 'react';
-import { SafeAreaView, FlatList, Text } from "react-native";
+import { SafeAreaView, FlatList, Text, TextInput, View } from "react-native";
 import { connect } from 'react-redux'
 import store from '../../../store'
 import { 
@@ -85,8 +85,26 @@ const Home = (props) => {
     props.dispatch(setRefreshFalse)
   }
 
+  const filter = (value) => {
+    const listAll = props.promotions.data;
+    const filtro = value !== '' ? listAll.filter(item => item.name.includes(value)) : listAll;
+    const listFavorite = filtro.filter(item => item.favoritar)
+    const listNotfavorite = filtro.filter(item => !item.favoritar)
+
+    props.dispatch(addListFavorite(listFavorite))
+    props.dispatch(addListNotFavorite(listNotfavorite))
+    props.dispatch(addList(listAll))
+  }
+
   return(
     <SafeAreaView style={{flex: 1}}>
+      <View style={{padding: 20}}>
+        <Text>FILTRO</Text>
+        <TextInput
+          onChangeText={filter}
+          style={{backgroundColor: '#FFFFFF'}}
+        />
+      </View>
       {!props.promotions.refreshing ? (
         <>
           {props.promotions.dataFavorite.length > 0 && 
